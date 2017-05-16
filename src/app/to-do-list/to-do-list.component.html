@@ -1,3 +1,5 @@
 <ul>
-  <li *ngFor="let item of thingsToDo">{{item | titlecase}}</li>
+  <li *ngFor="let item of thingsToDo; let i = index;">
+    <a [routerLink]="['/todo-details', i]">{{item | titlecase}}</a>
+  </li>
 </ul>
