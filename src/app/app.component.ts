@@ -17,6 +17,10 @@ export class AppComponent {
     'Learn TypeScript'
   ];
 
+  onNewItem(item: string) {
+    this.thingsToDo.push(item);
+  }
+
   summary(): string {
     return `${this.thingsToDo.length} to do / ${this.thingsCompleted.length} done`;
   }
