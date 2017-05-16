@@ -15,6 +15,8 @@ import { ToDoPageComponent } from "app/to-do-page/to-do-page.component";
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
+import { MissionComponent } from './mission/mission.component';
+import { ClientsComponent } from './clients/clients.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
     ToDoListComponent,
     GenericInputComponent,
     ToDoPageComponent, 
-    TitlecasePipe, AboutComponent, ContactComponent, ToDoDetailsComponent
+    TitlecasePipe, AboutComponent, ContactComponent, ToDoDetailsComponent, MissionComponent, ClientsComponent
   ],
   imports: [
     BrowserModule,
