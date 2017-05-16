@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ToDoService } from '../to-do.service'; 
 
 @Component({
   selector: 'app-to-do-list',
@@ -7,11 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ToDoListComponent implements OnInit {
 
-  @Input() thingsToDo: string[];
+  thingsToDo: string[];
 
-  constructor() { }
+  constructor(private toDoService: ToDoService) {
+
+   }
 
   ngOnInit() {
+    //this.thingsToDo = this.toDoService.getTasks();
+    this.toDoService.getTasks().subscribe((newItems) => {
+      this.thingsToDo = newItems;
+    });
   }
 
 }

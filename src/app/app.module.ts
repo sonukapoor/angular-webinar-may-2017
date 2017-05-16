@@ -8,6 +8,8 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { GenericInputComponent } from './generic-input/generic-input.component';
 import { TitlecasePipe } from './titlecase.pipe';
 
+import { ToDoService } from './to-do.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,7 @@ import { TitlecasePipe } from './titlecase.pipe';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ToDoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
