@@ -9,8 +9,14 @@ export class AppComponent {
   title = 'Things To Do';
   thingsToDo = [
     'Learn JavaScript',
-    'Learn TypeScript',
     'Learn Angular',
     'Learn Redux'
   ];
+  thingsCompleted = [
+    'Learn TypeScript'
+  ];
+
+  summary(): string {
+    return `${this.thingsToDo.length} to do / ${this.thingsCompleted.length} done`;
+  }
 }
