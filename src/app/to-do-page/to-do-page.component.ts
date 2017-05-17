@@ -15,7 +15,7 @@ export class ToDoPageComponent implements OnInit {
   }
   constructor(
     private todoService: ToDoService,
-    private store: Store<AppStore>) {}
+    public store: Store<AppStore>) {}
 
   onNewItem(item: string) {
     this.store.dispatch(addThingToDo(item))

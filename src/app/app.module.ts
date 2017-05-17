@@ -19,6 +19,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
 import { MissionComponent } from './mission/mission.component';
 import { ClientsComponent } from './clients/clients.component';
+import { RouterStoreModule } from '@ngrx/router-store';
 
 import { appStore } from './store';
 
@@ -38,6 +39,7 @@ import { appStore } from './store';
     RouterModule.forRoot(routeConfig),
     StoreModule.provideStore(appStore),
     StoreDevtoolsModule.instrumentStore(),
+    RouterStoreModule.connectRouter(),
   ],
   providers: [ToDoService],
   bootstrap: [AppComponent]

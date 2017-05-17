@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToDoService } from '../to-do.service'; 
-import { Store } from '@ngrx/store';
-import { AppStore } from '../store';
+import { ToDoService } from '../to-do.service';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-to-do-list',
@@ -10,11 +10,9 @@ import { AppStore } from '../store';
 })
 export class ToDoListComponent implements OnInit {
 
-  thingsToDo = this.store.select('thingsToDo')
+  @Input() thingsToDo = Observable.of([]);
 
-  constructor(
-    private toDoService: ToDoService,
-    private store: Store<AppStore>) {
+  constructor(private toDoService: ToDoService) {
 
    }
 

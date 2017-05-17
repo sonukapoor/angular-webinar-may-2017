@@ -1,2 +1,2 @@
-<app-to-do-list></app-to-do-list>
+<app-to-do-list [thingsToDo]="store.select('thingsToDo')"></app-to-do-list>
 <app-generic-input (newItem)="onNewItem($event)"></app-generic-input>
