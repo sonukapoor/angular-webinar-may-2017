@@ -11,13 +11,11 @@ import { CustomValidators } from './../custom-validators';
 export class GenericInputComponent implements OnInit {
 
   @Output() newItem: EventEmitter<string> = new EventEmitter();
-  textEntryFormControl: FormControl; // our input field
   textEntryForm: FormGroup; // our Form
 
   constructor(private builder: FormBuilder) {
-    this.textEntryFormControl = new FormControl('', [CustomValidators.timeFormat]);
     this.textEntryForm = builder.group({
-      textEntry: this.textEntryFormControl
+      textEntryFormControl: ['', Validators.compose([CustomValidators.timeFormat, Validators.required])]
     }); 
    }
 
@@ -25,7 +23,10 @@ export class GenericInputComponent implements OnInit {
   }
 
   addToDo() {
-    this.newItem.emit(this.textEntryFormControl.value);
+    //this.newItem.emit(this.textEntryFormControl.value);
+    console.log('this.textEntryForm.value.textEntryFormControl = >', this.textEntryForm.value.textEntryFormControl);
+    console.log('this.textEntryForm.get(textEntryFormControl).value', this.textEntryForm.get('textEntryFormControl').value) ;
+    this.newItem.emit(this.textEntryForm.get('textEntryFormControl').value);
     this.textEntryForm.reset();
   }
 

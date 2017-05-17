@@ -1,13 +1,13 @@
 <form [formGroup]="textEntryForm" (ngSubmit)="addToDo()">
 
-    <button type="submit">add</button>
-    <input #newItem placeholder="item" [formControl]="textEntryFormControl" />
+    <button type="submit" [disabled]="!textEntryForm.valid">add</button>
+    <input #newItem placeholder="item" formControlName="textEntryFormControl" />
     
-    <ul [hidden]="textEntryFormControl.valid || textEntryFormControl.untouched">
-        <li [hidden]="!textEntryFormControl.hasError('required')">
+    <ul [hidden]="textEntryForm.controls.textEntryFormControl.valid || textEntryForm.controls.textEntryFormControl.untouched">
+        <li [hidden]="!textEntryForm.controls.textEntryFormControl.hasError('required')">
             This field is required. 
         </li>
-        <li [hidden]="!textEntryFormControl.hasError('timeFormat')">
+        <li [hidden]="!textEntryForm.controls.textEntryFormControl.hasError('timeFormat')">
             This field format is invalid. 
         </li>
     </ul>
