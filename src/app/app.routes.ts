@@ -6,6 +6,7 @@ import { ToDoDetailsComponent } from 'app/to-do-details/to-do-details.component'
 import { MissionComponent } from 'app/mission/mission.component';
 import { ClientsComponent } from 'app/clients/clients.component'; 
 
+
 export const routeConfig: Routes = [
     { path: '', redirectTo: 'todo', pathMatch:'full'}, 
     { path:'todo', component: ToDoPageComponent },

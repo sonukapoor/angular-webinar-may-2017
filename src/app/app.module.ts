@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
@@ -18,6 +20,9 @@ import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
 import { MissionComponent } from './mission/mission.component';
 import { ClientsComponent } from './clients/clients.component';
 
+import { appStore } from './store';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +35,9 @@ import { ClientsComponent } from './clients/clients.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig),
+    StoreModule.provideStore(appStore),
+    StoreDevtoolsModule.instrumentStore(),
   ],
   providers: [ToDoService],
   bootstrap: [AppComponent]

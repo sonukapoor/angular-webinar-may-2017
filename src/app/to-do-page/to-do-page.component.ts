@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToDoService } from '../to-do.service';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../store';
+import { addThingToDo } from '../actions/add-things-to-do';
 
 @Component({
   selector: 'app-to-do-page',
@@ -10,9 +13,11 @@ export class ToDoPageComponent implements OnInit {
 
   ngOnInit() {
   }
-  constructor(private todoService: ToDoService) {}
+  constructor(
+    private todoService: ToDoService,
+    private store: Store<AppStore>) {}
 
   onNewItem(item: string) {
-    this.todoService.addItem(item);
+    this.store.dispatch(addThingToDo(item))
   }
 }

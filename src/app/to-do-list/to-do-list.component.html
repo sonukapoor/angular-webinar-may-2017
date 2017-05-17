@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of thingsToDo; let i = index;">
+  <li *ngFor="let item of thingsToDo | async; let i = index;">
     <a [routerLink]="['/todo-details', i]">{{item | titlecase}}</a>
   </li>
 </ul>
