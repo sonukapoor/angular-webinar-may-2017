@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; 
+import { CustomValidators } from './../custom-validators';
+
 
 @Component({
   selector: 'app-generic-input',
@@ -8,14 +11,22 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class GenericInputComponent implements OnInit {
 
   @Output() newItem: EventEmitter<string> = new EventEmitter();
+  textEntryFormControl: FormControl; // our input field
+  textEntryForm: FormGroup; // our Form
 
-  constructor() { }
+  constructor(private builder: FormBuilder) {
+    this.textEntryFormControl = new FormControl('', [CustomValidators.timeFormat]);
+    this.textEntryForm = builder.group({
+      textEntry: this.textEntryFormControl
+    }); 
+   }
 
   ngOnInit() {
   }
 
-  addToDo(text: HTMLInputElement) {
-    this.newItem.emit(text.value);
+  addToDo() {
+    this.newItem.emit(this.textEntryFormControl.value);
+    this.textEntryForm.reset();
   }
 
 }
