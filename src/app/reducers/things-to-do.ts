@@ -1,4 +1,4 @@
-export const thingsToDoReducer = (state = [], action) => {
+export function thingsToDoReducer(state = [], action) {
 
     switch(action.type) {
         case 'ADD_THING_TO_DO':

@@ -1,2 +1,21 @@
-<button (click)="addToDo(newItem)">add</button>
-<input #newItem placeholder="item" />
+<form #newItemForm="ngForm" (ngSubmit)="addToDo(newItemForm)">
+    <button type="submit" [disabled]=!newItemForm.valid>add</button>
+    <input name="newItem" #newItem="ngModel" ngModel required />
+    <ul [hidden]="newItem.valid || newItem.untouched">
+        <li [hidden]="!newItem.hasError('required')">
+            The field is required. 
+        </li>
+    </ul>
+    <p>
+        newItem.value: {{ newItem.value }}<br/>
+        newItem.valid: {{ newItem.valid }} <br/>
+        newItem.pristine: {{ newItem.pristine }} <br/>
+        newItem.touched: {{ newItem.touched }}
+    </p>
+    <hr/>
+    <p>
+        newItemForm.value: {{ newItemForm.value | json }}<br/>
+        newItemForm.valid: {{ newItemForm.valid }}<br/>
+        newItemForm.value.newItem: {{ newItemForm.value.newItem }}
+    </p>
+</form>
